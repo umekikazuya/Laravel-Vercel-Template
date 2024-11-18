@@ -2,34 +2,14 @@
     "regions": [
         "hnd1"
     ],
-    "builds": [
-        {
-            "src": "/api/index.php",
-            "use": "vercel-php@0.7.3"
-        },
-        {
-            "src": "/public/**",
-            "use": "@vercel/static"
+    "functions": {
+        "api/*.php": {
+          "runtime": "vercel-php@0.7.3"
         }
-    ],
-    "routes": [
-        {
-            "src": "/build/assets/(.*)",
-            "dest": "/public/build/assets/$1"
-        },
-        {
-            "src": "/favicon.ico",
-            "dest": "/public/favicon.ico"
-        },
-        {
-            "src": "/robots.txt",
-            "dest": "/public/robots.txt"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
-        }
-    ],
+      },
+      "routes": [
+        { "src": "/(.*)",  "dest": "/api/index.php" }
+      ],
     "env": {
         "APP_NAME": "Laravel Vercel",
         "APP_DEBUG": "false",
